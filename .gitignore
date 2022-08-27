@@ -9,6 +9,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+.husky
+.eslintcache
 
 # macOS
 .DS_Store
