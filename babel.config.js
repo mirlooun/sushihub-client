@@ -3,11 +3,13 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo', '@babel/preset-typescript'],
     plugins: [
-      require.resolve('babel-plugin-module-resolver'),
-      {
-        alias: { '.': './src' },
-        extensions: ['.ts', '.tsx'],
-      },
+      [
+        'module-resolver',
+        {
+          alias: { '/*': './src' },
+          extensions: ['.js', '.ts', '.tsx'],
+        },
+      ],
     ],
   }
 }
