@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, View } from 'react-native';
 import { MenuItem as MenuItemModel } from '@models/MenuItem';
 import DefaultText from '@components/base/DefaultText';
 import { Colors } from '@constants/index';
 import { formatCurrency } from '@utils/priceFormatter';
-import Icon from '@components/base/Icon';
 
 interface MenuItemProps {
   menuItem: MenuItemModel;
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.LightGreen,
   },
   priceTagRegularDashed: {
-    color: Colors.LightGrey,
+    color: Colors.DarkGrey,
     backgroundColor: Colors.LightGreen,
     textDecorationLine: 'line-through',
   },
