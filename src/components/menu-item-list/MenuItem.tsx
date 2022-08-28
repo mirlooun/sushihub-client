@@ -3,19 +3,19 @@ import { TouchableOpacity, Image, StyleSheet, View } from 'react-native';
 import { MenuItem as MenuItemModel } from '@models/MenuItem';
 import DefaultText from '@components/base/DefaultText';
 import { Colors } from '@constants/index';
-import { formatCurrency } from '@utils/priceFormatter';
+import PriceTag from '@components/menu-item-list/PriceTag';
 
 interface MenuItemProps {
   menuItem: MenuItemModel;
+  handleModalOpen: (menuItem: MenuItemModel) => void;
 }
 
-const MenuItem = ({ menuItem }: MenuItemProps) => {
+const MenuItem = ({ menuItem, handleModalOpen }: MenuItemProps) => {
   return (
-    <TouchableOpacity key={menuItem.id}>
+    <TouchableOpacity key={menuItem.id} onPress={() => handleModalOpen(menuItem)}>
       <View style={styles.container}>
         <Image source={{ uri: menuItem.image }} style={styles.image} />
         <Description {...menuItem} />
-        {/* <CartOptions /> */}
       </View>
     </TouchableOpacity>
   );
@@ -31,31 +31,7 @@ const Description = (props: MenuItemModel) => {
         </DefaultText>
         <DefaultText fontSize={'smallest'}>{description}</DefaultText>
       </View>
-      <PriceTag {...props} />
-    </View>
-  );
-};
-
-interface PriceTagProps {
-  price: number;
-  discountedPrice: number | null;
-}
-
-const PriceTag = ({ price, discountedPrice }: PriceTagProps) => {
-  return discountedPrice ? (
-    <View style={styles.priceWrapper}>
-      <DefaultText fontSize={'small'} style={[styles.priceTagRegularDashed, styles.priceTag]}>
-        {formatCurrency(price)}
-      </DefaultText>
-      <DefaultText fontSize={'small'} style={[styles.priceTagDiscounted, styles.priceTag, { marginLeft: 3 }]}>
-        {formatCurrency(discountedPrice)}
-      </DefaultText>
-    </View>
-  ) : (
-    <View style={styles.priceWrapper}>
-      <DefaultText fontSize={'small'} style={[styles.priceTagRegular, styles.priceTag]}>
-        {formatCurrency(price)}
-      </DefaultText>
+      <PriceTag size={'small'} {...props} />
     </View>
   );
 };

@@ -9,8 +9,8 @@ const Header = () => {
       <Location />
       <View style={styles.container}>
         <Greeting />
+        <SearchFood />
       </View>
-      <SearchFood />
     </>
   );
 };
@@ -20,6 +20,6 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     marginTop: 15,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
   },
 });
