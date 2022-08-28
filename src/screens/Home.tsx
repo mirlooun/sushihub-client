@@ -12,8 +12,8 @@ const Home = () => {
         <Location />
         <View style={styles.header}>
           <Greeting />
-          <SearchFood />
         </View>
+        <SearchFood />
       </View>
     </View>
   );

@@ -6,9 +6,11 @@ import CategoryChoice from '@components/header/CategoryChoice';
 
 const SearchFood = () => {
   return (
-    <View style={styles.container}>
-      <DefaultText fontSize={'big'}>What do you want to eat today?</DefaultText>
-      <Search />
+    <View>
+      <View style={styles.container}>
+        <DefaultText fontSize={'big'}>What do you want to eat today?</DefaultText>
+        <Search />
+      </View>
       <CategoryChoice />
     </View>
   );
@@ -19,5 +21,6 @@ export default SearchFood;
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
+    paddingHorizontal: 30,
   },
 });

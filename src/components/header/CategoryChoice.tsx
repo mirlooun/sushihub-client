@@ -10,11 +10,11 @@ const CategoryChoice = () => {
 
   return (
     <View style={styles.container}>
-      <DefaultText fontSize={'pre-big'} textType={'medium'}>
+      <DefaultText fontSize={'pre-big'} textType={'medium'} style={styles.textWrapper}>
         Choose category
       </DefaultText>
       <FlatList
-        style={styles.list}
+        contentContainerStyle={styles.list}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={categories}
@@ -32,7 +32,9 @@ interface CategoryProps {
   setChoosenCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Category = ({ categoryName, choosenCategory, setChoosenCategory }: CategoryProps) => {
+const Category = (props: CategoryProps) => {
+  const { categoryName, choosenCategory, setChoosenCategory } = props;
+
   const isSame = categoryName === choosenCategory;
 
   return (
@@ -62,5 +64,10 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: 10,
+    paddingLeft: 30,
+    paddingRight: 10,
+  },
+  textWrapper: {
+    paddingHorizontal: 30,
   },
 });
