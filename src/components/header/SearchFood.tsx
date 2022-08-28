@@ -20,7 +20,6 @@ export default SearchFood;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
     paddingHorizontal: 30,
   },
 });

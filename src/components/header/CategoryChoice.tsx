@@ -56,6 +56,7 @@ const Category = (props: CategoryProps) => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
+    paddingBottom: 5,
   },
   categoryWrapper: {
     paddingHorizontal: 15,
@@ -64,8 +65,7 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: 10,
-    paddingLeft: 30,
-    paddingRight: 10,
+    paddingHorizontal: 10,
   },
   textWrapper: {
     paddingHorizontal: 30,
