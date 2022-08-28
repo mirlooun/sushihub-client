@@ -5,13 +5,13 @@ import { View, StyleSheet } from 'react-native';
 
 const Header = () => {
   return (
-    <View>
+    <>
       <Location />
       <View style={styles.container}>
         <Greeting />
       </View>
       <SearchFood />
-    </View>
+    </>
   );
 };
 

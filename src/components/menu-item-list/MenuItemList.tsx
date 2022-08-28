@@ -73,7 +73,6 @@ export default MenuItemList;
 const styles = StyleSheet.create({
   container: {
     marginTop: 5,
-    paddingHorizontal: 10,
     paddingBottom: 100,
   },
 });
