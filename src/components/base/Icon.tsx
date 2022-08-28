@@ -1,16 +1,15 @@
-import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
-import { LocationIcon } from '@assets/icons';
+import { SvgXml } from 'react-native-svg';
+import { StyleSheet } from 'react-native';
+import { LocationIcon, SearchIcon } from '@assets/icons';
 
-type iconType = 'location';
+type iconType = 'location' | 'search';
 
 interface IconProps {
   name: iconType;
 }
 
 const Icon = ({ name }: IconProps) => {
-  const iconSource = getIconSource(name);
-
-  return <Image source={iconSource} style={styles.icon} />;
+  return <SvgXml xml={getIconXml(name)} style={styles.icon} />;
 };
 
 export default Icon;
@@ -22,16 +21,19 @@ const styles = StyleSheet.create({
   },
 });
 
-function getIconSource(iconType: iconType): ImageSourcePropType {
+function getIconXml(iconType: iconType): string {
   let icon;
 
   switch (iconType) {
     case 'location':
       icon = LocationIcon;
       break;
+    case 'search':
+      icon = SearchIcon;
+      break;
     default:
       throw new Error('Icon not found!');
   }
 
-  return icon as ImageSourcePropType;
+  return icon;
 }

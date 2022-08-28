@@ -21,7 +21,7 @@ const Greeting = () => {
     greetingTime = 'Evening';
   }
 
-  const greetingMessage = `${greetingTime}, Denis`;
+  const greetingMessage = `${greetingTime}, Ilja`;
 
   return (
     <View>

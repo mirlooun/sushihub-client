@@ -3,6 +3,7 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import Location from '@components/header/Location';
 import Colors from '@constants/colors';
 import Greeting from '@components/header/Greeting';
+import SearchFood from '@components/header/SearchFood';
 
 const Home = () => {
   return (
@@ -11,7 +12,7 @@ const Home = () => {
         <Location />
         <View style={styles.header}>
           <Greeting />
-          <></>
+          <SearchFood />
         </View>
       </View>
     </View>
