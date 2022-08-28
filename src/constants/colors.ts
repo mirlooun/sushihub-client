@@ -5,9 +5,9 @@ const Colors = {
   Green: '#ABDB83',
   LightGreen: '#EBF1CF',
   Red: '#FF6161',
-  DarkGrey: '#EDEDED',
-  Grey: '#F5F5F5',
-  LightGrey: '#C4C4C4',
+  Grey: '#EDEDED',
+  LightGrey: '#F5F5F5',
+  DarkGrey: '#C4C4C4',
   White: '#FFFFFF',
 };
 

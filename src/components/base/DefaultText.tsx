@@ -5,7 +5,7 @@ type CustomTextProps = {
   style?: TextStyle | TextStyle[];
   children?: React.ReactNode;
   textType?: 'regular' | 'bold' | 'light' | 'medium';
-  fontSize?: 'smallest' | 'small' | 'medium' | 'pre-big' | 'big';
+  fontSize?: 'smallest' | 'small' | 'medium' | 'pre-big' | 'big' | 'pre-medium';
 };
 
 const DefaultText = ({ children, textType, fontSize, style }: CustomTextProps) => {
@@ -43,6 +43,9 @@ const DefaultText = ({ children, textType, fontSize, style }: CustomTextProps) =
       break;
     case 'smallest':
       textStyle = { ...textStyle, fontSize: FontSizes.Smallest };
+      break;
+    case 'pre-medium':
+      textStyle = { ...textStyle, fontSize: FontSizes.PreMedium };
       break;
   }
 
