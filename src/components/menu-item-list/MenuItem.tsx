@@ -12,7 +12,7 @@ interface MenuItemProps {
 
 const MenuItem = ({ menuItem }: MenuItemProps) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity key={menuItem.id}>
       <View style={styles.container}>
         <Image source={{ uri: menuItem.image }} style={styles.image} />
         <Description {...menuItem} />
@@ -45,7 +45,7 @@ interface PriceTagProps {
 const PriceTag = ({ price, discountedPrice }: PriceTagProps) => {
   return discountedPrice ? (
     <View style={styles.priceWrapper}>
-      <DefaultText fontSize={'small'} style={[styles.priceTagRegular, styles.priceTag]}>
+      <DefaultText fontSize={'small'} style={[styles.priceTagRegularDashed, styles.priceTag]}>
         {formatCurrency(price)}
       </DefaultText>
       <DefaultText fontSize={'small'} style={[styles.priceTagDiscounted, styles.priceTag, { marginLeft: 3 }]}>
@@ -53,37 +53,10 @@ const PriceTag = ({ price, discountedPrice }: PriceTagProps) => {
       </DefaultText>
     </View>
   ) : (
-    <DefaultText fontSize={'small'} style={styles.priceTagRegular}>
-      {formatCurrency(price)}
-    </DefaultText>
-  );
-};
-
-const CartOptions = () => {
-  const [count, setCount] = useState(1);
-
-  const handleChangeCount = (type: 'incr' | 'decr') => {
-    if (type === 'incr') {
-      setCount((prev) => prev + 1);
-    } else {
-      setCount((prev) => {
-        if (prev === 1) return prev;
-        return prev - 1;
-      });
-    }
-  };
-
-  return (
-    <View style={styles.cartOptionsWrapper}>
-      <TouchableOpacity>
-        <Icon name={'remove'} />
-      </TouchableOpacity>
-      <DefaultText fontSize={'big'} textType={'regular'}>
-        {count}
+    <View style={styles.priceWrapper}>
+      <DefaultText fontSize={'small'} style={[styles.priceTagRegular, styles.priceTag]}>
+        {formatCurrency(price)}
       </DefaultText>
-      <TouchableOpacity>
-        <Icon name={'add'} />
-      </TouchableOpacity>
     </View>
   );
 };
@@ -103,13 +76,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   description: {
-    width: '30%',
     flexDirection: 'column',
     justifyContent: 'space-between',
   },
   image: {
-    width: 120,
-    height: '90%',
+    width: 130,
+    height: '100%',
     alignSelf: 'center',
   },
   priceWrapper: {
@@ -123,6 +95,11 @@ const styles = StyleSheet.create({
   priceTagRegular: {
     color: Colors.Coal,
     backgroundColor: Colors.LightGreen,
+  },
+  priceTagRegularDashed: {
+    color: Colors.LightGrey,
+    backgroundColor: Colors.LightGreen,
+    textDecorationLine: 'line-through',
   },
   priceTagDiscounted: {
     color: Colors.White,

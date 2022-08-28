@@ -52,7 +52,7 @@ const RootStack = () => {
       <Tab.Navigator
         initialRouteName={'Home'}
         tabBar={(props) => <Navbar {...props} />}
-        defaultScreenOptions={{ headerShown: false, headerTransparent: true }}
+        defaultScreenOptions={{ headerShown: false, headerTransparent: true, tabBarHideOnKeyboard: true }}
       >
         <Tab.Screen name={'Home'} options={{ headerShown: false }} component={Home} />
         <Tab.Screen name={'History'} options={{ headerShown: false }} component={History} />

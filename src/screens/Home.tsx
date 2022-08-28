@@ -1,17 +1,20 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 import Colors from '@constants/colors';
 import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 import Header from '@components/header/Header';
 import MenuItemList from '@components/menu-item-list/MenuItemList';
+import { ScrollView } from 'react-native-gesture-handler';
+import CategoryChoice from '@components/header/CategoryChoice';
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView stickyHeaderIndices={[1]} style={styles.container}>
       <Header />
+      <CategoryChoice />
       <MenuItemList />
-      <ExpoStatusBar style="auto" />
-    </View>
+      <ExpoStatusBar style="auto" backgroundColor={Colors.Grey} />
+    </ScrollView>
   );
 };
 

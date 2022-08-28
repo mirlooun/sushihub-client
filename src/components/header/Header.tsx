@@ -1,7 +1,6 @@
 import Location from '@components/header/Location';
 import Greeting from '@components/header/Greeting';
 import SearchFood from '@components/header/SearchFood';
-import CategoryChoice from '@components/header/CategoryChoice';
 import { View, StyleSheet } from 'react-native';
 
 const Header = () => {
@@ -12,7 +11,6 @@ const Header = () => {
         <Greeting />
       </View>
       <SearchFood />
-      <CategoryChoice />
     </View>
   );
 };

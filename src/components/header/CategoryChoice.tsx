@@ -55,8 +55,9 @@ const Category = (props: CategoryProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 10,
+    paddingTop: 10,
     paddingBottom: 5,
+    backgroundColor: Colors.Grey,
   },
   categoryWrapper: {
     paddingHorizontal: 15,

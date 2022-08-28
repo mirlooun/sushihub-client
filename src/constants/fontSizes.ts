@@ -1,5 +1,5 @@
 const FontSizes = {
-  Smallest: 10,
+  Smallest: 12,
   Small: 14,
   Medium: 18,
   PreBig: 22,
