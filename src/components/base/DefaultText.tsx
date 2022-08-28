@@ -1,12 +1,14 @@
 import { Text, StyleSheet, TextStyle } from 'react-native';
+import { FontSizes } from '@constants/index';
 
 type CustomTextProps = {
   style?: TextStyle | TextStyle[];
   children?: React.ReactNode;
-  textType?: 'regular' | 'bold' | 'light';
+  textType?: 'regular' | 'bold' | 'light' | 'medium';
+  fontSize?: 'small' | 'medium' | 'pre-big' | 'big';
 };
 
-const DefaultText = ({ children, textType, style }: CustomTextProps) => {
+const DefaultText = ({ children, textType, fontSize, style }: CustomTextProps) => {
   let textStyle = {};
   switch (textType) {
     case 'regular':
@@ -18,8 +20,26 @@ const DefaultText = ({ children, textType, style }: CustomTextProps) => {
     case 'light':
       textStyle = styles.light;
       break;
+    case 'medium':
+      textStyle = styles.medium;
+      break;
     default:
       textStyle = styles.regular;
+      break;
+  }
+
+  switch (fontSize) {
+    case 'small':
+      textStyle = { ...textStyle, fontSize: FontSizes.Small };
+      break;
+    case 'medium':
+      textStyle = { ...textStyle, fontSize: FontSizes.Medium };
+      break;
+    case 'pre-big':
+      textStyle = { ...textStyle, fontSize: FontSizes.PreBig };
+      break;
+    case 'big':
+      textStyle = { ...textStyle, fontSize: FontSizes.Big };
       break;
   }
 
@@ -37,6 +57,9 @@ const styles = StyleSheet.create({
   },
   light: {
     fontFamily: 'Poppins-Light',
+  },
+  medium: {
+    fontFamily: 'Poppins-Medium',
   },
 });
 

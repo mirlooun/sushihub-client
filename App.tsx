@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { StyleSheet, SafeAreaView } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useCallback, useEffect } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import Home from '@screens/Home';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -32,10 +33,10 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+      <Home />
+      <ExpoStatusBar style="auto" />
+    </SafeAreaView>
   );
 }
 
