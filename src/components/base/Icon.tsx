@@ -1,13 +1,29 @@
 import { SvgXml } from 'react-native-svg';
 import { StyleSheet } from 'react-native';
 import { LocationIcon, SearchIcon, AddIcon, RemoveIcon } from '@assets/icons';
+import {
+  ProfileClicked,
+  ProfileUnClicked,
+  CartClicked,
+  CartUnClicked,
+  HistoryClicked,
+  HistoryUnClicked,
+  HomeClicked,
+  HomeUnClicked,
+} from '@assets/icons/navbar';
 
-type iconType = 'location' | 'search' | cartControls;
+export type IconType = 'location' | 'search' | cartControls | NavBarType;
 
 type cartControls = 'add' | 'remove';
 
+type navBarTapped = 'home' | 'history' | 'cart' | 'profile';
+
+type navBarUnTapped = 'unHome' | 'unHistory' | 'unCart' | 'unProfile';
+
+export type NavBarType = navBarTapped | navBarUnTapped;
+
 interface IconProps {
-  name: iconType;
+  name: IconType;
 }
 
 const Icon = ({ name }: IconProps) => {
@@ -23,7 +39,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function getIconXml(iconType: iconType): string {
+function getIconXml(iconType: IconType): string {
   let icon;
 
   switch (iconType) {
@@ -38,6 +54,30 @@ function getIconXml(iconType: iconType): string {
       break;
     case 'remove':
       icon = RemoveIcon;
+      break;
+    case 'home':
+      icon = HomeClicked;
+      break;
+    case 'unHome':
+      icon = HomeUnClicked;
+      break;
+    case 'profile':
+      icon = ProfileClicked;
+      break;
+    case 'unProfile':
+      icon = ProfileUnClicked;
+      break;
+    case 'history':
+      icon = HistoryClicked;
+      break;
+    case 'unHistory':
+      icon = HistoryUnClicked;
+      break;
+    case 'cart':
+      icon = CartClicked;
+      break;
+    case 'unCart':
+      icon = CartUnClicked;
       break;
     default:
       throw new Error('Icon not found!');

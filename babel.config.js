@@ -18,6 +18,7 @@ module.exports = function (api) {
             '@constants': './src/constants',
             '@models': './src/models',
             '@utils': './src/utils',
+            '@navigation': './src/navigation',
           },
         },
       ],
