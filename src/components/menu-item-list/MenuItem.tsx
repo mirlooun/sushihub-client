@@ -12,13 +12,13 @@ interface MenuItemProps {
 
 const MenuItem = ({ menuItem }: MenuItemProps) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.image}>
+    <TouchableOpacity>
+      <View style={styles.container}>
         <Image source={{ uri: menuItem.image }} style={styles.image} />
-      </TouchableOpacity>
-      <Description {...menuItem} />
-      {/* <CartOptions /> */}
-    </View>
+        <Description {...menuItem} />
+        {/* <CartOptions /> */}
+      </View>
+    </TouchableOpacity>
   );
 };
 
