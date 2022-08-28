@@ -1,4 +1,3 @@
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useCallback, useEffect } from 'react';

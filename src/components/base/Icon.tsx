@@ -1,8 +1,10 @@
 import { SvgXml } from 'react-native-svg';
 import { StyleSheet } from 'react-native';
-import { LocationIcon, SearchIcon } from '@assets/icons';
+import { LocationIcon, SearchIcon, AddIcon, RemoveIcon } from '@assets/icons';
 
-type iconType = 'location' | 'search';
+type iconType = 'location' | 'search' | cartControls;
+
+type cartControls = 'add' | 'remove';
 
 interface IconProps {
   name: iconType;
@@ -30,6 +32,12 @@ function getIconXml(iconType: iconType): string {
       break;
     case 'search':
       icon = SearchIcon;
+      break;
+    case 'add':
+      icon = AddIcon;
+      break;
+    case 'remove':
+      icon = RemoveIcon;
       break;
     default:
       throw new Error('Icon not found!');

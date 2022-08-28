@@ -3,11 +3,13 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import Colors from '@constants/colors';
 import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 import Header from '@components/header/Header';
+import MenuItemList from '@components/menu-item-list/MenuItemList';
 
 const Home = () => {
   return (
     <View style={styles.container}>
       <Header />
+      <MenuItemList />
       <ExpoStatusBar style="auto" />
     </View>
   );

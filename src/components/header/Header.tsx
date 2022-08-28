@@ -19,7 +19,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 25,
+    marginTop: 15,
     paddingHorizontal: 30,
   },
 });
