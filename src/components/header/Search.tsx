@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderRadius: 25,
-    marginTop: 15,
+    marginTop: 10,
   },
   iconWrapper: {
     marginHorizontal: 5,
