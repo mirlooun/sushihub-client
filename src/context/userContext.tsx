@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { User } from 'src/models/User';
 import jwt_decode from 'jwt-decode';
-import AsyncStorage from '@react-native-community/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import { initialState } from '@context/userReducer';
 
 export interface AuthContext {
@@ -29,18 +29,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const removeUser = async () => {
-    await AsyncStorage.removeItem('token');
+    await SecureStore.deleteItemAsync('token');
     setUser(null);
     setToken(null);
   };
 
   const addTokenToStorage = async (token: string) => {
-    await AsyncStorage.setItem('token', token);
+    await SecureStore.setItemAsync('token', token);
   };
 
   const restoreUserFromStorage = async () => {
-    const token = await AsyncStorage.getItem('token');
-
+    const token = await SecureStore.getItemAsync('token');
     if (token) {
       const user = jwt_decode<User>(token);
       setUser(user);

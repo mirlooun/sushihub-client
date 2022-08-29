@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+// screens
 import Welcome from '@screens/Welcome';
 import Login from '@screens/Login';
 import Register from '@screens/Register';
@@ -13,9 +15,9 @@ type WelcomeStackParamList = {
 
 const Stack = createStackNavigator<WelcomeStackParamList>();
 
-const WelcomeStack = () => {
+const WelcomeStack = ({ onReady }: { onReady: () => Promise<void> }) => {
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={onReady}>
       <Stack.Navigator
         initialRouteName={'Welcome'}
         defaultScreenOptions={{ headerShown: false, headerTransparent: true }}

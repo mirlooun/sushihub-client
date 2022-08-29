@@ -1,29 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as SplashScreen from 'expo-splash-screen';
-import Navbar from '@components/navbar/Navbar';
 import { useFonts } from 'expo-font';
 import React, { useCallback, useEffect } from 'react';
 
-// screens
-import Home from '@screens/Home';
-import History from '@screens/History';
-import Cart from '@screens/Cart';
-import Profile from '@screens/Profile';
-
 // context
-import { CartProvider } from '@context/cartContext';
 import useAuth from '@context/userContext';
+
+// stacks
 import WelcomeStack from '@navigation/WelcomeStack';
-
-type RootStackParamList = {
-  Home: undefined;
-  History: undefined;
-  Cart: undefined;
-  Profile: undefined;
-};
-
-const Tab = createBottomTabNavigator<RootStackParamList>();
+import AppStack from '@navigation/AppStack';
 
 const RootStack = () => {
   const [fontsLoaded] = useFonts({
@@ -42,6 +26,8 @@ const RootStack = () => {
     prepare();
   }, []);
 
+  const { getToken } = useAuth();
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
@@ -52,29 +38,8 @@ const RootStack = () => {
     return null;
   }
 
-  const { getToken } = useAuth();
-
   return (
-    <>
-      {getToken() !== null ? (
-        <CartProvider>
-          <NavigationContainer onReady={onLayoutRootView}>
-            <Tab.Navigator
-              initialRouteName={'Home'}
-              tabBar={(props) => <Navbar {...props} />}
-              defaultScreenOptions={{ headerShown: false, headerTransparent: true, tabBarHideOnKeyboard: true }}
-            >
-              <Tab.Screen name={'Home'} options={{ headerShown: false }} component={Home} />
-              <Tab.Screen name={'History'} options={{ headerShown: false }} component={History} />
-              <Tab.Screen name={'Cart'} options={{ headerShown: false }} component={Cart} />
-              <Tab.Screen name={'Profile'} options={{ headerShown: false }} component={Profile} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </CartProvider>
-      ) : (
-        <WelcomeStack />
-      )}
-    </>
+    <>{getToken() !== null ? <AppStack onReady={onLayoutRootView} /> : <WelcomeStack onReady={onLayoutRootView} />}</>
   );
 };
 

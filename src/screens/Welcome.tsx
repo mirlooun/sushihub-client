@@ -1,11 +1,12 @@
-import { View } from 'react-native';
 import DefaultText from '@components/base/DefaultText';
+import BaseScreen from '@components/base/BaseScreen';
+import Colors from '@constants/colors';
 
 const Welcome = () => {
   return (
-    <View>
+    <BaseScreen backgroundColor={Colors.White}>
       <DefaultText>Welcome</DefaultText>
-    </View>
+    </BaseScreen>
   );
 };
 
