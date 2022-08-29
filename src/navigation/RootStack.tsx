@@ -3,14 +3,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as SplashScreen from 'expo-splash-screen';
 import Navbar from '@components/navbar/Navbar';
 import { useFonts } from 'expo-font';
-import { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 // screens
 import Home from '@screens/Home';
 import History from '@screens/History';
 import Cart from '@screens/Cart';
 import Profile from '@screens/Profile';
+
+// context
 import { CartProvider } from '@context/cartContext';
+import useAuth from '@context/userContext';
+import WelcomeStack from '@navigation/WelcomeStack';
 
 type RootStackParamList = {
   Home: undefined;
@@ -48,21 +52,29 @@ const RootStack = () => {
     return null;
   }
 
+  const { getToken } = useAuth();
+
   return (
-    <CartProvider>
-      <NavigationContainer onReady={onLayoutRootView}>
-        <Tab.Navigator
-          initialRouteName={'Home'}
-          tabBar={(props) => <Navbar {...props} />}
-          defaultScreenOptions={{ headerShown: false, headerTransparent: true, tabBarHideOnKeyboard: true }}
-        >
-          <Tab.Screen name={'Home'} options={{ headerShown: false }} component={Home} />
-          <Tab.Screen name={'History'} options={{ headerShown: false }} component={History} />
-          <Tab.Screen name={'Cart'} options={{ headerShown: false }} component={Cart} />
-          <Tab.Screen name={'Profile'} options={{ headerShown: false }} component={Profile} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </CartProvider>
+    <>
+      {getToken() !== null ? (
+        <CartProvider>
+          <NavigationContainer onReady={onLayoutRootView}>
+            <Tab.Navigator
+              initialRouteName={'Home'}
+              tabBar={(props) => <Navbar {...props} />}
+              defaultScreenOptions={{ headerShown: false, headerTransparent: true, tabBarHideOnKeyboard: true }}
+            >
+              <Tab.Screen name={'Home'} options={{ headerShown: false }} component={Home} />
+              <Tab.Screen name={'History'} options={{ headerShown: false }} component={History} />
+              <Tab.Screen name={'Cart'} options={{ headerShown: false }} component={Cart} />
+              <Tab.Screen name={'Profile'} options={{ headerShown: false }} component={Profile} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </CartProvider>
+      ) : (
+        <WelcomeStack />
+      )}
+    </>
   );
 };
 
