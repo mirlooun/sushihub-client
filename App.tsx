@@ -1,5 +1,10 @@
 import RootStack from '@navigation/RootStack';
+import { AuthProvider } from '@context/userContext';
 
 export default function App() {
-  return <RootStack />;
+  return (
+    <AuthProvider>
+      <RootStack />
+    </AuthProvider>
+  );
 }
