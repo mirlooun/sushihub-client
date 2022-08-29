@@ -7,18 +7,23 @@ interface ButtonProps {
   color: string;
   backgroundColor: string;
   btnSize: ButtonSize;
+  isBordered?: boolean;
   callback?: () => void | React.Dispatch<React.SetStateAction<any>>;
 }
 
 type ButtonSize = 'small' | 'large';
 
-const Button = ({ title, color, backgroundColor, btnSize, callback }: ButtonProps) => {
+const Button = ({ title, color, backgroundColor, btnSize, isBordered, callback }: ButtonProps) => {
   return (
     <TouchableOpacity
-      style={[styles.container, { backgroundColor, width: btnSize === 'small' ? 250 : 300 }]}
+      style={[
+        styles.container,
+        { backgroundColor, width: btnSize === 'small' ? 250 : 300 },
+        isBordered ? { borderWidth: 4, borderColor: color } : {},
+      ]}
       onPress={() => (callback ? callback() : {})}
     >
-      <DefaultText textType={'regular'} fontSize={'medium'} style={{ color }}>
+      <DefaultText textType={'regular'} fontSize={btnSize === 'regular' ? 'medium' : 'pre-big'} style={{ color }}>
         {title}
       </DefaultText>
     </TouchableOpacity>

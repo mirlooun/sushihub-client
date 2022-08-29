@@ -8,6 +8,7 @@ import {
   CloseButtonIcon,
   LikeButton,
   UnLikeButton,
+  ButtonBackIcon,
 } from '@assets/icons';
 import {
   ProfileClicked,
@@ -20,7 +21,7 @@ import {
   HomeUnClicked,
 } from '@assets/icons/navbar';
 
-export type IconType = 'location' | 'search' | 'closeBtn' | cartControls | NavBarType | likeBtn;
+export type IconType = 'location' | 'search' | 'closeBtn' | cartControls | NavBarType | likeBtn | btnBack;
 
 type cartControls = 'add' | 'remove';
 
@@ -29,6 +30,8 @@ type navBarTapped = 'home' | 'history' | 'cart' | 'profile';
 type navBarUnTapped = 'unHome' | 'unHistory' | 'unCart' | 'unProfile';
 
 type likeBtn = 'likeBtn' | 'unLikeBtn';
+
+type btnBack = 'btnBack';
 
 export type NavBarType = navBarTapped | navBarUnTapped;
 
@@ -97,6 +100,9 @@ function getIconXml(iconType: IconType): string {
       break;
     case 'unLikeBtn':
       icon = UnLikeButton;
+      break;
+    case 'btnBack':
+      icon = ButtonBackIcon;
       break;
     default:
       throw new Error('Icon not found!');

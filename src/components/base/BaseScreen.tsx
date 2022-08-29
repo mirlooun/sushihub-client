@@ -5,14 +5,15 @@ import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
 
 interface BaseScreenProps {
   backgroundColor: string;
+  transparentStatusbar?: boolean;
   children: React.ReactNode;
 }
 
-const BaseScreen = ({ children, backgroundColor }: BaseScreenProps) => {
+const BaseScreen = ({ children, backgroundColor, transparentStatusbar }: BaseScreenProps) => {
   return (
     <View style={[styles.container, { backgroundColor }]}>
       {children}
-      <ExpoStatusBar style="auto" backgroundColor={backgroundColor} />
+      <ExpoStatusBar style="auto" translucent={transparentStatusbar} backgroundColor={backgroundColor} />
     </View>
   );
 };

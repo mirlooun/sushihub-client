@@ -5,6 +5,7 @@ const FontSizes = {
   Medium: 18,
   PreBig: 22,
   Big: 24,
+  Ultra: 36,
 };
 
 export default FontSizes;

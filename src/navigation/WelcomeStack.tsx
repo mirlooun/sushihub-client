@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 // screens
 import Welcome from '@screens/Welcome';
@@ -14,6 +15,8 @@ type WelcomeStackParamList = {
 };
 
 const Stack = createStackNavigator<WelcomeStackParamList>();
+
+export type Props = NativeStackScreenProps<WelcomeStackParamList>;
 
 const WelcomeStack = ({ onReady }: { onReady: () => Promise<void> }) => {
   return (
