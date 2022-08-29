@@ -35,7 +35,7 @@ const Welcome = ({ navigation }: Props) => {
             color={Colors.White}
             backgroundColor={Colors.Salmon}
             btnSize={'large'}
-            callback={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('Login')}
           />
         </View>
         <Button
@@ -44,7 +44,7 @@ const Welcome = ({ navigation }: Props) => {
           backgroundColor={Colors.White}
           btnSize={'large'}
           isBordered
-          callback={() => navigation.navigate('Register')}
+          onPress={() => navigation.navigate('Register')}
         />
       </View>
     </BaseScreen>

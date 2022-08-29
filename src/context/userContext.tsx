@@ -13,6 +13,7 @@ export interface AuthContext {
   addTokenToStorage: (token: string) => void;
   restoreUserFromStorage: () => void;
   getUser: () => User | null;
+  updateUser: (updatedUser: User) => void;
   getToken: () => string | null;
 }
 
@@ -50,6 +51,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return user;
   };
 
+  const updateUser = (updatedUser: User) => {
+    setUser({ ...updatedUser });
+  };
+
   const getToken = () => {
     return token;
   };
@@ -62,6 +67,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     addTokenToStorage,
     restoreUserFromStorage,
     getUser,
+    updateUser,
     getToken,
   };
 

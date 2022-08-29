@@ -7,15 +7,22 @@ import FontSizes from '@constants/fontSizes';
 interface FormProps {
   fields: { name: string; isSecret?: boolean }[];
   btnTitle: string;
+  btnCallBack: () => void;
 }
 
-const Form = ({ fields, btnTitle }: FormProps) => {
+const Form = ({ fields, btnTitle, btnCallBack }: FormProps) => {
   return (
     <View style={formStyles.container}>
       {fields.map((field, index) => (
         <FormField key={index} fieldName={field.name} isSecret={field.isSecret} />
       ))}
-      <Button title={btnTitle} color={Colors.White} backgroundColor={Colors.Salmon} btnSize={'small'} />
+      <Button
+        title={btnTitle}
+        color={Colors.White}
+        backgroundColor={Colors.Salmon}
+        btnSize={'small'}
+        onPress={() => btnCallBack()}
+      />
     </View>
   );
 };

@@ -72,7 +72,7 @@ const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
           </View>
           <View style={styles.bottomContainer}>
             <Button
-              callback={() => handleAddToCart()}
+              onPress={() => handleAddToCart()}
               title={isInCart(menuItem) ? 'Remove from cart' : 'Add to cart'}
               color={Colors.White}
               backgroundColor={isInCart(menuItem) ? Colors.Coal : Colors.Salmon}

@@ -8,12 +8,12 @@ interface ButtonProps {
   backgroundColor: string;
   btnSize: ButtonSize;
   isBordered?: boolean;
-  callback?: () => void | React.Dispatch<React.SetStateAction<any>>;
+  onPress?: () => void | React.Dispatch<React.SetStateAction<any>>;
 }
 
 type ButtonSize = 'small' | 'large';
 
-const Button = ({ title, color, backgroundColor, btnSize, isBordered, callback }: ButtonProps) => {
+const Button = ({ title, color, backgroundColor, btnSize, isBordered, onPress: callback }: ButtonProps) => {
   return (
     <TouchableOpacity
       style={[
@@ -23,7 +23,7 @@ const Button = ({ title, color, backgroundColor, btnSize, isBordered, callback }
       ]}
       onPress={() => (callback ? callback() : {})}
     >
-      <DefaultText textType={'regular'} fontSize={btnSize === 'regular' ? 'medium' : 'pre-big'} style={{ color }}>
+      <DefaultText textType={'regular'} fontSize={btnSize === 'small' ? 'medium' : 'pre-big'} style={{ color }}>
         {title}
       </DefaultText>
     </TouchableOpacity>

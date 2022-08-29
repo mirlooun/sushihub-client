@@ -3,5 +3,5 @@ export interface User {
   firstName: string;
   lastName: string;
   phoneNumber: string;
-  address: string;
+  address: string | null;
 }

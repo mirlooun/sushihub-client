@@ -1,25 +1,30 @@
 import React from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
+import { TextInput, View, StyleSheet, Keyboard } from 'react-native';
 import DefaultText from '@components/base/DefaultText';
 import FontSizes from '@constants/fontSizes';
 import Colors from '@constants/colors';
+import { TextInputEvent } from '@screens/Profile';
 
 interface UserFieldProps {
-  fieldName: string;
-  value: string;
+  title: string;
+  value: string | null;
+  fieldName?: string;
   isEditable?: boolean;
+  onChange?: (event: TextInputEvent) => void;
 }
 
-const UserField = ({ fieldName, value, isEditable }: UserFieldProps) => {
+const UserField = ({ title, fieldName, value, isEditable, onChange }: UserFieldProps) => {
   return (
     <View style={styles.container}>
       <DefaultText fontSize={'pre-medium'} style={styles.fontTranparent}>
-        {fieldName}
+        {title}
       </DefaultText>
       {isEditable ? (
         <TextInput
-          value={value}
+          value={value || ''}
           style={[{ fontFamily: 'Poppins-Regular', fontSize: FontSizes.PreMedium, color: Colors.Black }]}
+          onChangeText={(value) => onChange && fieldName && onChange({ fieldName, value })}
+          onSubmitEditing={Keyboard.dismiss}
         />
       ) : (
         <DefaultText fontSize={'pre-medium'} style={!isEditable ? { opacity: 0.3 } : {}}>
