@@ -10,6 +10,7 @@ import Home from '@screens/Home';
 import History from '@screens/History';
 import Cart from '@screens/Cart';
 import Profile from '@screens/Profile';
+import { CartProvider } from '@context/cartContext';
 
 type RootStackParamList = {
   Home: undefined;
@@ -48,18 +49,20 @@ const RootStack = () => {
   }
 
   return (
-    <NavigationContainer onReady={onLayoutRootView}>
-      <Tab.Navigator
-        initialRouteName={'Home'}
-        tabBar={(props) => <Navbar {...props} />}
-        defaultScreenOptions={{ headerShown: false, headerTransparent: true, tabBarHideOnKeyboard: true }}
-      >
-        <Tab.Screen name={'Home'} options={{ headerShown: false }} component={Home} />
-        <Tab.Screen name={'History'} options={{ headerShown: false }} component={History} />
-        <Tab.Screen name={'Cart'} options={{ headerShown: false }} component={Cart} />
-        <Tab.Screen name={'Profile'} options={{ headerShown: false }} component={Profile} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <CartProvider>
+      <NavigationContainer onReady={onLayoutRootView}>
+        <Tab.Navigator
+          initialRouteName={'Home'}
+          tabBar={(props) => <Navbar {...props} />}
+          defaultScreenOptions={{ headerShown: false, headerTransparent: true, tabBarHideOnKeyboard: true }}
+        >
+          <Tab.Screen name={'Home'} options={{ headerShown: false }} component={Home} />
+          <Tab.Screen name={'History'} options={{ headerShown: false }} component={History} />
+          <Tab.Screen name={'Cart'} options={{ headerShown: false }} component={Cart} />
+          <Tab.Screen name={'Profile'} options={{ headerShown: false }} component={Profile} />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </CartProvider>
   );
 };
 

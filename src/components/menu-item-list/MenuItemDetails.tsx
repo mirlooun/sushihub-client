@@ -6,6 +6,7 @@ import DefaultText from '@components/base/DefaultText';
 import PriceTag from '@components/menu-item-list/PriceTag';
 import Button from '@components/base/Button';
 import Colors from '@constants/colors';
+import useCart from '@context/cartContext';
 
 interface MenuItemDetailsProps {
   menuItem: MenuItem;
@@ -15,7 +16,7 @@ interface MenuItemDetailsProps {
 const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
   const [amount, changeAmout] = useState(1);
   const [isFavorite, changeFavorite] = useState(false);
-  const [isAddedToCart, changeAddedToCart] = useState(false);
+  const { isInCart, addToCart, removeFromCart } = useCart();
 
   const handleAmoutChange = (action: 'add' | 'remove') => {
     if (action === 'add') {
@@ -36,7 +37,11 @@ const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
   };
 
   const handleAddToCart = () => {
-    changeAddedToCart((prev) => !prev);
+    if (isInCart(menuItem)) {
+      removeFromCart(menuItem);
+    } else {
+      addToCart(menuItem);
+    }
     changeAmout(1);
   };
 
@@ -68,9 +73,9 @@ const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
           <View style={styles.bottomContainer}>
             <Button
               callback={() => handleAddToCart()}
-              title={isAddedToCart ? 'Remove from cart' : 'Add to cart'}
+              title={isInCart(menuItem) ? 'Remove from cart' : 'Add to cart'}
               color={Colors.White}
-              backgroundColor={isAddedToCart ? Colors.Coal : Colors.Salmon}
+              backgroundColor={isInCart(menuItem) ? Colors.Coal : Colors.Salmon}
               btnSize={'small'}
             />
           </View>

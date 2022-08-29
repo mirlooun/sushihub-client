@@ -2,11 +2,12 @@ import { View, StyleSheet } from 'react-native';
 import Heading from '@components/base/Heading';
 import DefaultText from '@components/base/DefaultText';
 import BaseScreen from '@components/base/BaseScreen';
+import Colors from '@constants/colors';
 
 const Cart = () => {
   const cartItems = [];
   return (
-    <BaseScreen>
+    <BaseScreen backgroundColor={Colors.Grey}>
       <Heading name={'Cart'} />
       <View style={styles.container}>
         {cartItems.length > 0 ? (
