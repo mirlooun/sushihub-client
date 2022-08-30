@@ -7,7 +7,7 @@ import { Colors } from '@constants/index';
 import useAuth from '@context/userContext';
 
 const Greeting = () => {
-  const { user } = useAuth();
+  const { getUser } = useAuth();
   const currentTime = moment();
   const morning = moment(currentTime.format('YYYY-MM-DD') + ' 06:00');
   const afternoon = moment(currentTime.format('YYYY-MM-DD') + ' 12:00');
@@ -24,7 +24,7 @@ const Greeting = () => {
     greetingTime = 'Evening';
   }
 
-  const greetingMessage = `${greetingTime}, ${user?.firstName}`;
+  const greetingMessage = `${greetingTime}, ${getUser()?.firstName}`;
 
   return (
     <View>
