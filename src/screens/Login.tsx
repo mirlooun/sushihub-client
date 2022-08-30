@@ -1,13 +1,11 @@
 import { View, StyleSheet } from 'react-native';
 import { Props } from '@navigation/WelcomeStack';
 
-// components
-import DefaultText from '@components/base/DefaultText';
-import BaseScreen from '@components/base/BaseScreen';
-import Colors from '@constants/colors';
-import ButtonBack from '@components/base/ButtonBack';
+import { ButtonBack, DefaultText, BaseScreen } from '@components/base';
 import SvgComponent from '@components/welcome/SvgComponent';
 import Form from '@components/form/Form';
+
+import Colors from '@constants/colors';
 import useAuth from '@context/userContext';
 
 const mockToken =

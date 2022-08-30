@@ -1,8 +1,9 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
+
 import DefaultText from '@components/base/DefaultText';
-import { formatCurrency } from '@utils/priceFormatter';
+
 import Colors from '@constants/colors';
+import { formatCurrency } from '@utils/priceFormatter';
 
 interface PriceTagProps {
   price: number;

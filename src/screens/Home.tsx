@@ -1,9 +1,10 @@
-import Colors from '@constants/colors';
-import Header from '@components/header/Header';
-import MenuItemList from '@components/menu-item-list/MenuItemList';
-import { ScrollView } from 'react-native-gesture-handler';
-import CategoryChoice from '@components/header/CategoryChoice';
+import { ScrollView } from 'react-native';
+
 import BaseScreen from '@components/base/BaseScreen';
+import { Header, CategoryChoice } from '@components/header';
+import MenuItemList from '@components/menu-item-list/MenuItemList';
+
+import Colors from '@constants/colors';
 
 const Home = () => {
   return (

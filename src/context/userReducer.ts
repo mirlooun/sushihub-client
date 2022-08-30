@@ -9,4 +9,5 @@ export const initialState: AuthContext = {
   restoreUserFromStorage: () => null,
   getUser: () => null,
   getToken: () => null,
+  updateUser: () => null,
 };

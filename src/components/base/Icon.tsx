@@ -1,5 +1,6 @@
 import { SvgXml } from 'react-native-svg';
 import { StyleSheet } from 'react-native';
+
 import {
   LocationIcon,
   SearchIcon,

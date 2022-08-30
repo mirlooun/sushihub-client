@@ -1,8 +1,10 @@
 import { View, StyleSheet } from 'react-native';
-import BaseScreen from '@components/base/BaseScreen';
-import Colors from '@constants/colors';
+
+import { BaseScreen, Button } from '@components/base';
 import SvgComponent from '@components/welcome/SvgComponent';
-import Button from '@components/base/Button';
+
+import Colors from '@constants/colors';
+
 import { Props } from '@navigation/WelcomeStack';
 
 const Welcome = ({ navigation }: Props) => {

@@ -1,4 +1,5 @@
 import { TouchableOpacity, StyleSheet } from 'react-native';
+
 import Icon from '@components/base/Icon';
 import Colors from '@constants/colors';
 

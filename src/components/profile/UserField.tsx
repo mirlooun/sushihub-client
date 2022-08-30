@@ -1,8 +1,7 @@
-import React from 'react';
 import { TextInput, View, StyleSheet, Keyboard } from 'react-native';
+
 import DefaultText from '@components/base/DefaultText';
-import FontSizes from '@constants/fontSizes';
-import Colors from '@constants/colors';
+import { FontSizes, Colors } from '@constants/index';
 import { TextInputEvent } from '@screens/Profile';
 
 interface UserFieldProps {

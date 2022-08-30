@@ -1,8 +1,8 @@
-import React from 'react';
-import DefaultText from '@components/base/DefaultText';
 import { TouchableOpacity, StyleSheet, View } from 'react-native';
+
+import { DefaultText, Icon } from '@components/base';
+
 import Colors from '@constants/colors';
-import Icon from '@components/base/Icon';
 
 const Location = () => {
   return (

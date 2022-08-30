@@ -1,9 +1,10 @@
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import Colors from '@constants/colors';
-import DefaultText from '@components/base/DefaultText';
-import Icon from '@components/base/Icon';
 
-export const CartControls = (props: { amount: number; handleAmountChange: (action: 'add' | 'remove') => void }) => {
+import { Icon, DefaultText } from '@components/base';
+
+import Colors from '@constants/colors';
+
+const AmountControls = (props: { amount: number; handleAmountChange: (action: 'add' | 'remove') => void }) => {
   return (
     <View style={styles.controls}>
       <DefaultText fontSize={'medium'} textType={'regular'} style={{ color: Colors.Coal }}>
@@ -23,6 +24,8 @@ export const CartControls = (props: { amount: number; handleAmountChange: (actio
     </View>
   );
 };
+
+export default AmountControls;
 
 const styles = StyleSheet.create({
   controls: {

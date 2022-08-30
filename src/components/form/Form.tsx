@@ -1,8 +1,9 @@
-import { View, TextInput, StyleSheet } from 'react-native';
-import Colors from '@constants/colors';
+import { View, StyleSheet } from 'react-native';
+
 import Button from '@components/base/Button';
-import DefaultText from '@components/base/DefaultText';
-import FontSizes from '@constants/fontSizes';
+import FormField from '@components/form/FormField';
+
+import Colors from '@constants/colors';
 
 interface FormProps {
   fields: { name: string; isSecret?: boolean }[];
@@ -12,7 +13,7 @@ interface FormProps {
 
 const Form = ({ fields, btnTitle, btnCallBack }: FormProps) => {
   return (
-    <View style={formStyles.container}>
+    <View style={styles.container}>
       {fields.map((field, index) => (
         <FormField key={index} fieldName={field.name} isSecret={field.isSecret} />
       ))}
@@ -27,40 +28,14 @@ const Form = ({ fields, btnTitle, btnCallBack }: FormProps) => {
   );
 };
 
-interface FormFieldProps {
-  fieldName: string;
-  isSecret?: boolean;
-}
-
-const FormField = ({ fieldName, isSecret }: FormFieldProps) => {
-  return (
-    <View style={formStyles.fieldContainer}>
-      <DefaultText fontSize={'pre-medium'}>{fieldName}</DefaultText>
-      <TextInput style={formStyles.innerContainer} secureTextEntry={isSecret ? true : false} />
-    </View>
-  );
-};
-
 export default Form;
 
-const formStyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     marginTop: 20,
     backgroundColor: Colors.White,
     paddingHorizontal: 20,
     paddingVertical: 40,
     borderRadius: 35,
-  },
-  fieldContainer: {
-    marginBottom: 20,
-    backgroundColor: Colors.White,
-  },
-  innerContainer: {
-    padding: 10,
-    backgroundColor: Colors.White,
-    borderColor: Colors.Grey,
-    borderWidth: 3,
-    borderRadius: 6,
-    fontSize: FontSizes.PreMedium,
   },
 });

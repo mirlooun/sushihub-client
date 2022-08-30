@@ -1,5 +1,7 @@
 import { View, StyleSheet } from 'react-native';
+
 import MenuItem from '@components/menu-item-list/MenuItem';
+
 import { MenuItem as MenuItemModel } from '@models/MenuItem';
 import { useMenuItemDetailsModal } from '@hooks/useMenuItemDetailsModal';
 

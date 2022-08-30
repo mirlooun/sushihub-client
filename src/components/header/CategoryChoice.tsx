@@ -1,7 +1,9 @@
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import DefaultText from '@components/base/DefaultText';
 import { useState } from 'react';
-import { Colors } from '@constants/index';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+
+import DefaultText from '@components/base/DefaultText';
+
+import Colors from '@constants/colors';
 
 const CategoryChoice = () => {
   const categories = ['All', 'Urumaki', 'Tempura Maki', 'Hosomaki', 'Backed Maki', 'Drinks', 'Additional'];

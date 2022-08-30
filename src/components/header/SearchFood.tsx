@@ -1,4 +1,3 @@
-import React from 'react';
 import DefaultText from '@components/base/DefaultText';
 import Search from '@components/header/Search';
 

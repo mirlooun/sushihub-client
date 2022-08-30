@@ -1,10 +1,13 @@
-import React from 'react';
-import { View } from 'react-native';
-import DefaultText from '@components/base/DefaultText';
 import moment from 'moment';
+import { View } from 'react-native';
+
+import DefaultText from '@components/base/DefaultText';
+
 import { Colors } from '@constants/index';
+import useAuth from '@context/userContext';
 
 const Greeting = () => {
+  const { user } = useAuth();
   const currentTime = moment();
   const morning = moment(currentTime.format('YYYY-MM-DD') + ' 06:00');
   const afternoon = moment(currentTime.format('YYYY-MM-DD') + ' 12:00');
@@ -21,7 +24,7 @@ const Greeting = () => {
     greetingTime = 'Evening';
   }
 
-  const greetingMessage = `${greetingTime}, Ilja`;
+  const greetingMessage = `${greetingTime}, ${user?.firstName}`;
 
   return (
     <View>

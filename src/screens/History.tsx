@@ -1,15 +1,13 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
-import Heading from '@components/base/Heading';
-import DefaultText from '@components/base/DefaultText';
-import BaseScreen from '@components/base/BaseScreen';
-import { Colors } from '@constants/index';
+
+import Colors from '@constants/colors';
+import { BaseScreen, DefaultText, Heading } from '@components/base';
 
 const History = () => {
   const orderHistory = [];
   return (
-    <BaseScreen>
+    <BaseScreen backgroundColor={Colors.Grey}>
       <Heading name={'History'} />
       <View style={styles.container}>
         {orderHistory.length > 0 ? (

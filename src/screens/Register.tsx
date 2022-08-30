@@ -1,11 +1,12 @@
 import { View, StyleSheet } from 'react-native';
-import DefaultText from '@components/base/DefaultText';
-import { Props } from '@navigation/WelcomeStack';
-import BaseScreen from '@components/base/BaseScreen';
-import ButtonBack from '@components/base/ButtonBack';
+
+import { DefaultText, BaseScreen, ButtonBack } from '@components/base';
 import Form from '@components/form/Form';
 import SvgComponent from '@components/welcome/SvgComponent';
+
 import Colors from '@constants/colors';
+
+import { Props } from '@navigation/WelcomeStack';
 
 const Register = ({ navigation }: Props) => {
   return (
@@ -20,6 +21,7 @@ const Register = ({ navigation }: Props) => {
         <Form
           fields={[{ name: 'First name' }, { name: 'Last name' }, { name: 'Email' }, { name: 'Password' }]}
           btnTitle={'Create account'}
+          btnCallBack={() => null}
         />
       </View>
     </BaseScreen>

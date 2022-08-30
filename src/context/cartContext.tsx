@@ -1,5 +1,4 @@
-import { createContext, ReactNode, useContext } from 'react';
-import { useReducer } from 'react';
+import { createContext, ReactNode, useContext, useReducer } from 'react';
 import { MenuItem } from '@models/MenuItem';
 import cartReducer, { initialState } from './cartReducer';
 

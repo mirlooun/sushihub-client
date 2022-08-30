@@ -1,4 +1,5 @@
 import { Text, StyleSheet, TextStyle } from 'react-native';
+
 import { FontSizes } from '@constants/index';
 
 type CustomTextProps = {

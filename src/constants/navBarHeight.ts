@@ -1,1 +1,3 @@
-export const NavBarHeight = 54;
+const NavBarHeight = 54;
+
+export default NavBarHeight;

@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Keyboard } from 'react-native';
-import Heading from '@components/base/Heading';
-import BaseScreen from '@components/base/BaseScreen';
+import { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+
+import { Heading, BaseScreen, Button } from '@components/base';
 import UserField from '@components/profile/UserField';
-import Colors from '@constants/colors';
-import Button from '@components/base/Button';
 import Version from '@components/profile/Version';
-import { NavBarHeight } from '@constants/index';
+
+import { Colors, NavBarHeight } from '@constants/index';
+
 import useAuth from '@context/userContext';
 import { User } from '@models/User';
 
 type EditableFields = 'firstName' | 'lastName' | 'address' | 'email';
+
 export interface TextInputEvent {
   fieldName: string;
   value: string;

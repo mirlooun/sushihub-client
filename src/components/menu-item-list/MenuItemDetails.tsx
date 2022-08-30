@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { MenuItem } from '@models/MenuItem';
-import Icon from '@components/base/Icon';
-import DefaultText from '@components/base/DefaultText';
+
+import { Icon, DefaultText, Button } from '@components/base';
+import AmountControls from 'src/components/menu-item-list/AmountControls';
 import PriceTag from '@components/menu-item-list/PriceTag';
-import Button from '@components/base/Button';
+
 import Colors from '@constants/colors';
+import { MenuItem } from '@models/MenuItem';
 import useCart from '@context/cartContext';
-import { CartControls } from '@components/menu-item-list/CartControls';
 
 interface MenuItemDetailsProps {
   menuItem: MenuItem;
@@ -60,7 +60,7 @@ const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
               </DefaultText>
               <PriceTag size={'medium'} {...menuItem} />
             </View>
-            <CartControls amount={amount} handleAmountChange={handleAmoutChange} />
+            <AmountControls amount={amount} handleAmountChange={handleAmoutChange} />
           </View>
           <View style={styles.descriptionBox}>
             <DefaultText fontSize={'medium'} textType={'medium'} style={{ color: Colors.Coal }}>

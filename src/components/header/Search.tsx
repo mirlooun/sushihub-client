@@ -1,4 +1,5 @@
 import { View, TextInput, StyleSheet } from 'react-native';
+
 import { Colors, FontSizes } from '@constants/index';
 import Icon from '@components/base/Icon';
 

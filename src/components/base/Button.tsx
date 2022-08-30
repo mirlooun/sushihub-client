@@ -1,5 +1,5 @@
-import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
+
 import DefaultText from '@components/base/DefaultText';
 
 interface ButtonProps {

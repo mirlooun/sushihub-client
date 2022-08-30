@@ -1,7 +1,7 @@
-import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import Colors from '@constants/colors';
 import ExpoStatusBar from 'expo-status-bar/build/ExpoStatusBar';
+
+import Colors from '@constants/colors';
 
 interface BaseScreenProps {
   backgroundColor: string;

@@ -1,11 +1,12 @@
 import { TouchableOpacity, Image, StyleSheet, View } from 'react-native';
-import { MenuItem as MenuItemModel } from '@models/MenuItem';
-import DefaultText from '@components/base/DefaultText';
-import { Colors } from '@constants/index';
+
+import { DefaultText, Icon } from '@components/base';
 import PriceTag from '@components/menu-item-list/PriceTag';
-import { CartControls as AmountControls } from '@components/menu-item-list/CartControls';
+import AmountControls from 'src/components/menu-item-list/AmountControls';
+
+import { Colors } from '@constants/index';
+import { MenuItem as MenuItemModel } from '@models/MenuItem';
 import useCart from '@context/cartContext';
-import Icon from '@components/base/Icon';
 import { usePromptModal } from '@hooks/usePromptModal';
 
 interface MenuItemProps {

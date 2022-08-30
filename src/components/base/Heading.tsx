@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+
 import DefaultText from '@components/base/DefaultText';
 
 interface HeadingProps {

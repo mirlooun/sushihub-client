@@ -1,6 +1,12 @@
 import { SvgXml } from 'react-native-svg';
 import { StyleProp, ViewStyle } from 'react-native';
-import { Title, SushiSmall, SushiMedium, SushiBig } from '@assets/icons/welcome';
+
+import {
+  Title,
+  SushiSmall as SushiSmallWelcome,
+  SushiMedium as SushiMediumWelcome,
+  SushiBig as SushiBigWelcome,
+} from '@assets/icons/welcome';
 import { SushiBig as SushiBigLogin, SushiSmall as SushiSmallLogin } from '@assets/icons/login';
 import { SushiBig as SushiBigRegister, SushiSmall as SushiSmallRegister } from '@assets/icons/register';
 
@@ -29,15 +35,15 @@ function getIconXml(name: Icons, screen: Screens): string {
       } else if (screen === 'Register') {
         return SushiSmallRegister;
       }
-      return SushiSmall;
+      return SushiSmallWelcome;
     case 'sushi-medium':
-      return SushiMedium;
+      return SushiMediumWelcome;
     case 'sushi-big':
       if (screen === 'Login') {
         return SushiBigLogin;
       } else if (screen === 'Register') {
         return SushiBigRegister;
       }
-      return SushiBig;
+      return SushiBigWelcome;
   }
 }
