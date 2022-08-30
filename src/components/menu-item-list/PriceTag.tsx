@@ -8,18 +8,21 @@ interface PriceTagProps {
   price: number;
   discountedPrice: number | null;
   size: 'small' | 'medium';
+  isCartView?: boolean;
 }
 
-const PriceTag = ({ price, discountedPrice, size }: PriceTagProps) => {
+const PriceTag = ({ price, discountedPrice, size, isCartView }: PriceTagProps) => {
   return discountedPrice ? (
     <View style={styles.priceWrapper}>
-      <DefaultText fontSize={size} style={[styles.priceTagRegularDashed, styles.priceTag]}>
-        {formatCurrency(price)}
-      </DefaultText>
-      <DefaultText
-        fontSize={size}
-        style={[styles.priceTagDiscounted, styles.priceTag, { marginLeft: size === 'medium' ? 7 : 3 }]}
-      >
+      {!isCartView && (
+        <DefaultText
+          fontSize={size}
+          style={[styles.priceTagRegularDashed, styles.priceTag, { marginRight: size === 'medium' ? 7 : 3 }]}
+        >
+          {formatCurrency(price)}
+        </DefaultText>
+      )}
+      <DefaultText fontSize={size} style={[styles.priceTagDiscounted, styles.priceTag]}>
         {formatCurrency(discountedPrice)}
       </DefaultText>
     </View>

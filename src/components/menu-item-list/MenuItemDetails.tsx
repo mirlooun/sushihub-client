@@ -7,6 +7,7 @@ import PriceTag from '@components/menu-item-list/PriceTag';
 import Button from '@components/base/Button';
 import Colors from '@constants/colors';
 import useCart from '@context/cartContext';
+import { CartControls } from '@components/menu-item-list/CartControls';
 
 interface MenuItemDetailsProps {
   menuItem: MenuItem;
@@ -40,9 +41,8 @@ const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
     if (isInCart(menuItem)) {
       removeFromCart(menuItem);
     } else {
-      addToCart(menuItem);
+      addToCart({ ...menuItem, amount });
     }
-    changeAmout(1);
   };
 
   return (
@@ -55,12 +55,12 @@ const MenuItemDetails = ({ menuItem, closeModal }: MenuItemDetailsProps) => {
         <View style={styles.infoBox}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={{ maxWidth: 260 }}>
-              <DefaultText fontSize={'medium'} textType={'medium'}>
+              <DefaultText fontSize={'medium'} textType={'medium'} style={{ paddingBottom: 3 }}>
                 {menuItem.description}
               </DefaultText>
               <PriceTag size={'medium'} {...menuItem} />
             </View>
-            <CartControls amount={amount} handleAmoutChange={handleAmoutChange} />
+            <CartControls amount={amount} handleAmountChange={handleAmoutChange} />
           </View>
           <View style={styles.descriptionBox}>
             <DefaultText fontSize={'medium'} textType={'medium'} style={{ color: Colors.Coal }}>
@@ -98,27 +98,6 @@ const LikeButton = (props: { isFavorite: boolean; handleFavoriteChange: () => vo
     <TouchableOpacity onPress={() => props.handleFavoriteChange()} style={styles.likeButton}>
       <Icon name={props.isFavorite ? 'likeBtn' : 'unLikeBtn'} />
     </TouchableOpacity>
-  );
-};
-
-const CartControls = (props: { amount: number; handleAmoutChange: (action: 'add' | 'remove') => void }) => {
-  return (
-    <View style={styles.controls}>
-      <DefaultText fontSize={'medium'} textType={'regular'} style={{ color: Colors.Coal }}>
-        Amount
-      </DefaultText>
-      <View style={styles.innerWrapper}>
-        <TouchableOpacity onPress={() => props.handleAmoutChange('remove')}>
-          <Icon name={'remove'} />
-        </TouchableOpacity>
-        <DefaultText fontSize={'pre-big'} textType={'regular'}>
-          {props.amount}
-        </DefaultText>
-        <TouchableOpacity onPress={() => props.handleAmoutChange('add')}>
-          <Icon name={'add'} />
-        </TouchableOpacity>
-      </View>
-    </View>
   );
 };
 

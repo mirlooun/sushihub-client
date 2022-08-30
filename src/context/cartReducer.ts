@@ -7,6 +7,7 @@ export const initialState: CartContext = {
   isInCart: () => false,
   addToCart: () => null,
   removeFromCart: () => null,
+  updateAmount: () => null,
 };
 
 interface CartActionA {
@@ -23,7 +24,14 @@ interface CartActionB {
   };
 }
 
-type CartAction = CartActionA | CartActionB;
+interface CartActionC {
+  type: 'UPDATE_AMOUNT';
+  payload: {
+    cartItems: MenuItem[];
+  };
+}
+
+type CartAction = CartActionA | CartActionB | CartActionC;
 
 const cartReducer = (state: CartContext, action: CartAction) => {
   const { type, payload } = action;
@@ -45,6 +53,12 @@ const cartReducer = (state: CartContext, action: CartAction) => {
       return {
         ...state,
         total: payload.total,
+      };
+    }
+    case 'UPDATE_AMOUNT': {
+      return {
+        ...state,
+        cartItems: [...payload.cartItems],
       };
     }
   }

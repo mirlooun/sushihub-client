@@ -1,21 +1,58 @@
-import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, View } from 'react-native';
 import { MenuItem as MenuItemModel } from '@models/MenuItem';
 import DefaultText from '@components/base/DefaultText';
 import { Colors } from '@constants/index';
 import PriceTag from '@components/menu-item-list/PriceTag';
+import { CartControls as AmountControls } from '@components/menu-item-list/CartControls';
+import useCart from '@context/cartContext';
+import Icon from '@components/base/Icon';
+import { usePromptModal } from '@hooks/usePromptModal';
 
 interface MenuItemProps {
   menuItem: MenuItemModel;
-  handleModalOpen: (menuItem: MenuItemModel) => void;
+  isCartView?: boolean;
+  handleModalOpen?: (menuItem: MenuItemModel) => void;
 }
 
-const MenuItem = ({ menuItem, handleModalOpen }: MenuItemProps) => {
+const MenuItem = ({ menuItem, handleModalOpen, isCartView }: MenuItemProps) => {
+  const { removeFromCart, updateAmount } = useCart();
+
+  const handleAmoutChange = (action: 'add' | 'remove') => {
+    updateAmount(menuItem, action);
+  };
+
+  const handleRemove = () => {
+    removeFromCart(menuItem);
+  };
+
+  const { handlePromptModalOpen, PromptModal } = usePromptModal({ onAgree: handleRemove });
+
   return (
-    <TouchableOpacity key={menuItem.id} onPress={() => handleModalOpen(menuItem)}>
-      <View style={styles.container}>
+    <TouchableOpacity key={menuItem.id} onPress={() => handleModalOpen && handleModalOpen(menuItem)}>
+      <View
+        style={[
+          styles.container,
+          {
+            justifyContent: 'space-evenly',
+          },
+        ]}
+      >
         <Image source={{ uri: menuItem.image }} style={styles.image} />
-        <Description {...menuItem} />
+        <View style={styles.description}>
+          <Description {...menuItem} />
+          <PriceTag size={'small'} {...menuItem} isCartView={isCartView} />
+        </View>
+        {isCartView && (
+          <>
+            <View style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
+              <AmountControls amount={menuItem.amount as number} handleAmountChange={handleAmoutChange} />
+              <TouchableOpacity onPress={handlePromptModalOpen}>
+                <Icon name={'trashBin'} />
+              </TouchableOpacity>
+            </View>
+            <PromptModal />
+          </>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -24,14 +61,11 @@ const MenuItem = ({ menuItem, handleModalOpen }: MenuItemProps) => {
 const Description = (props: MenuItemModel) => {
   const { title, description } = props;
   return (
-    <View style={styles.description}>
-      <View>
-        <DefaultText fontSize={'medium'} style={{ color: Colors.Green }}>
-          {title}
-        </DefaultText>
-        <DefaultText fontSize={'smallest'}>{description}</DefaultText>
-      </View>
-      <PriceTag size={'small'} {...props} />
+    <View>
+      <DefaultText fontSize={'medium'} style={{ color: Colors.Green }}>
+        {title}
+      </DefaultText>
+      <DefaultText fontSize={'smallest'}>{description}</DefaultText>
     </View>
   );
 };
@@ -46,39 +80,18 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.White,
     marginTop: 10,
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
     paddingVertical: 15,
     paddingHorizontal: 10,
   },
   description: {
     flexDirection: 'column',
     justifyContent: 'space-between',
+    width: 110,
   },
   image: {
     width: 130,
     height: '100%',
     alignSelf: 'center',
-  },
-  priceWrapper: {
-    flexDirection: 'row',
-  },
-  priceTag: {
-    paddingVertical: 5,
-    paddingHorizontal: 8,
-    borderRadius: 15,
-  },
-  priceTagRegular: {
-    color: Colors.Coal,
-    backgroundColor: Colors.LightGreen,
-  },
-  priceTagRegularDashed: {
-    color: Colors.DarkGrey,
-    backgroundColor: Colors.LightGreen,
-    textDecorationLine: 'line-through',
-  },
-  priceTagDiscounted: {
-    color: Colors.White,
-    backgroundColor: Colors.Red,
   },
   cartOptionsWrapper: {
     flexDirection: 'row',

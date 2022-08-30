@@ -5,3 +5,4 @@ export { default as RemoveIcon } from './RemoveIcon';
 export { default as CloseButtonIcon } from './CloseButton';
 export { LikeButton, UnLikeButton } from './LikeButton';
 export { ButtonBackIcon } from './ButtonBackIcon';
+export { TrashBinIcon } from './TrashBin';

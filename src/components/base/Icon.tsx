@@ -9,6 +9,7 @@ import {
   LikeButton,
   UnLikeButton,
   ButtonBackIcon,
+  TrashBinIcon,
 } from '@assets/icons';
 import {
   ProfileClicked,
@@ -21,7 +22,7 @@ import {
   HomeUnClicked,
 } from '@assets/icons/navbar';
 
-export type IconType = 'location' | 'search' | 'closeBtn' | cartControls | NavBarType | likeBtn | btnBack;
+export type IconType = 'location' | 'search' | 'closeBtn' | cartControls | NavBarType | likeBtn | btnBack | 'trashBin';
 
 type cartControls = 'add' | 'remove';
 
@@ -103,6 +104,9 @@ function getIconXml(iconType: IconType): string {
       break;
     case 'btnBack':
       icon = ButtonBackIcon;
+      break;
+    case 'trashBin':
+      icon = TrashBinIcon;
       break;
     default:
       throw new Error('Icon not found!');

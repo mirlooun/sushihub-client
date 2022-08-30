@@ -9,6 +9,7 @@ export interface CartContext {
   isInCart: (menuItem: MenuItem) => boolean;
   addToCart: (menuItem: MenuItem) => void;
   removeFromCart: (menuItem: MenuItem) => void;
+  updateAmount: (menuItem: MenuItem, action: 'add' | 'remove') => void;
 }
 
 const CartContext = createContext<CartContext>(initialState);
@@ -45,9 +46,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
     menuItems.forEach((item) => {
       if (item.discountedPrice) {
-        total += item.discountedPrice;
+        total += item.discountedPrice * (item.amount as number);
       } else {
-        total += item.price;
+        total += item.price * (item.amount as number);
       }
     });
 
@@ -59,8 +60,34 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
+  const updateAmount = (menuItem: MenuItem, action: 'add' | 'remove') => {
+    const cartItems = [...state.cartItems];
+
+    const menuItemFromCart = cartItems.find((item) => item.id === menuItem.id);
+
+    if (menuItemFromCart) {
+      const itemAmount = menuItemFromCart.amount as number;
+      if (action === 'add') {
+        if (itemAmount > 50) return;
+        menuItemFromCart.amount = itemAmount + 1;
+      } else {
+        if (itemAmount === 1) return;
+        menuItemFromCart.amount = itemAmount - 1;
+      }
+    }
+
+    updatePrice(cartItems);
+
+    dispatch({
+      type: 'UPDATE_AMOUNT',
+      payload: {
+        cartItems,
+      },
+    });
+  };
+
   const isInCart = (menuItem: MenuItem) => {
-    return Boolean(state.cartItems.find((item) => item.title === menuItem.title));
+    return Boolean(state.cartItems.find((item) => item.id === menuItem.id));
   };
 
   const value = {
@@ -69,6 +96,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     isInCart,
     addToCart,
     removeFromCart,
+    updateAmount,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

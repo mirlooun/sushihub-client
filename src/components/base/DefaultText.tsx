@@ -8,7 +8,7 @@ type CustomTextProps = {
   fontSize?: 'smallest' | 'small' | 'medium' | 'pre-big' | 'big' | 'pre-medium' | 'ultra';
 };
 
-const DefaultText = ({ children, textType, fontSize, style }: CustomTextProps) => {
+const DefaultText = ({ children, textType = 'regular', fontSize = 'medium', style }: CustomTextProps) => {
   let textStyle = {};
   switch (textType) {
     case 'regular':

@@ -1,22 +1,10 @@
-import { View, StyleSheet, Modal } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import MenuItem from '@components/menu-item-list/MenuItem';
-import MenuItemDetails from '@components/menu-item-list/MenuItemDetails';
 import { MenuItem as MenuItemModel } from '@models/MenuItem';
-import { useState } from 'react';
+import { useMenuItemDetailsModal } from '@hooks/useMenuItemDetailsModal';
 
 const MenuItemList = () => {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [selectedMenuItem, setSelectedMenuItem] = useState<MenuItemModel | null>(null);
-
-  const handleModalOpen = (menuItem: MenuItemModel) => {
-    setModalVisible(true);
-    setSelectedMenuItem(menuItem);
-  };
-
-  const handleModalClose = () => {
-    setModalVisible(false);
-    setSelectedMenuItem(null);
-  };
+  const { handleModalOpen, MenuItemDetailsModal } = useMenuItemDetailsModal();
 
   const data: MenuItemModel[] = [
     {
@@ -82,15 +70,12 @@ const MenuItemList = () => {
   ];
   return (
     <>
-      <View style={styles.container}>{data.map((item) => MenuItem({ menuItem: item, handleModalOpen }))}</View>
-      <Modal
-        animationType={'slide'}
-        transparent={true}
-        visible={isModalVisible}
-        onRequestClose={() => handleModalClose()}
-      >
-        {selectedMenuItem && <MenuItemDetails menuItem={selectedMenuItem} closeModal={handleModalClose} />}
-      </Modal>
+      <View style={styles.container}>
+        {data.map((item) => (
+          <MenuItem key={item.id} menuItem={item} handleModalOpen={handleModalOpen} />
+        ))}
+      </View>
+      <MenuItemDetailsModal />
     </>
   );
 };
