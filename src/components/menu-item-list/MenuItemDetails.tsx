@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import { Icon, DefaultText, Button } from '@components/base';
-import AmountControls from 'src/components/menu-item-list/AmountControls';
+import AmountControls from '@components/menu-item-list/AmountControls';
 import PriceTag from '@components/menu-item-list/PriceTag';
 
 import Colors from '@constants/colors';

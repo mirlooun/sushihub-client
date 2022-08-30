@@ -2,7 +2,7 @@ import { TouchableOpacity, Image, StyleSheet, View } from 'react-native';
 
 import { DefaultText, Icon } from '@components/base';
 import PriceTag from '@components/menu-item-list/PriceTag';
-import AmountControls from 'src/components/menu-item-list/AmountControls';
+import AmountControls from '@components/menu-item-list/AmountControls';
 
 import { Colors } from '@constants/index';
 import { MenuItem as MenuItemModel } from '@models/MenuItem';
